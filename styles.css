@@ -1,0 +1,1560 @@
+/* ===== Step 2: CSS Styling (AppPlan.md §6 + §3-4) ===== */
+
+
+
+
+
+
+
+/* --- Base Reset (§6.1) --- */
+
+
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+html, body { height: 100%; overflow: hidden; position: relative; }
+
+
+
+
+
+
+
+/* === Theme Variables (§6.2) === */
+
+
+
+:root {
+
+
+
+    --bg: #FFFFFF;
+
+
+
+    --text: #222222;
+
+
+
+    --header-bg: #F9F9F9;
+
+
+
+    --nav-bg: #F9F9F9;
+
+
+
+    --accent: #4A6FA5;
+
+
+
+    --toc-overlay: rgba(0,0,0,0.5);
+
+
+
+    --toc-card: #FFFFFF;
+
+
+
+
+
+    --font-size-base: 17px;
+
+}
+
+
+
+html.sepia {
+
+
+
+    --bg: #F5E6C8;
+
+
+
+    --text: #4A3B2C;
+
+
+
+    --header-bg: #E8D5B7;
+
+
+
+    --nav-bg: #E8D5B7;
+
+
+
+    --accent: #8B6914;
+
+
+
+    --toc-overlay: rgba(50,30,10,0.5);
+
+
+
+    --toc-card: #F0DCC0;
+
+
+
+}
+
+
+
+html.dark {
+
+
+
+    --bg: #1A1A1A;
+
+
+
+    --text: #D0D0D0;
+
+
+
+    --header-bg: #2A2A2A;
+
+
+
+    --nav-bg: #2A2A2A;
+
+
+
+    --accent: #7EA1C1;
+
+
+
+    --toc-overlay: rgba(0,0,0,0.7);
+
+
+
+    --toc-card: #2A2A2A;
+
+
+
+}
+
+
+
+
+
+
+
+/* === Header (§3.3) === */
+
+
+
+.app-header {
+
+
+
+    display: flex;
+
+
+
+    align-items: center;
+
+
+
+    height: 56px;
+
+
+
+    min-height: 56px;
+
+
+
+    background-color: var(--header-bg);
+
+
+
+    color: var(--text);
+
+
+
+    padding: 0 12px;
+
+
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+
+
+    position: fixed;
+
+
+
+    top: 0;
+
+
+
+    left: 0;
+
+
+
+    right: 0;
+
+
+
+    z-index: 100;
+
+
+
+}
+
+
+
+
+
+
+
+.btn-toc,
+
+
+
+.btn-menu {
+
+
+
+    flex-shrink: 0;
+
+
+
+    width: 48px;
+
+
+
+    height: 48px;
+
+
+
+    background: transparent;
+
+
+
+    border: none;
+
+
+
+    font-size: 24px;
+
+
+
+    color: var(--text);
+
+
+
+    cursor: pointer;
+
+
+
+    display: flex;
+
+
+
+    align-items: center;
+
+
+
+    justify-content: center;
+
+
+
+}
+
+
+
+.btn-toc:focus,
+
+
+
+.btn-menu:focus {
+
+
+
+    outline: 2px solid var(--accent);
+
+
+
+    outline-offset: -2px;
+
+
+
+}
+
+
+
+
+
+
+
+.book-title {
+
+
+
+    flex: 1;
+
+
+
+    text-align: center;
+
+
+
+    overflow: hidden;
+
+
+
+    text-overflow: ellipsis;
+
+
+
+    white-space: nowrap;
+
+
+
+    font-size: 15px;
+
+
+
+    font-weight: 600;
+
+
+
+    color: var(--text);
+
+
+
+}
+
+
+
+
+
+
+
+/* === Chapter Heading (§3.2) === */
+
+
+
+.chapter-heading-area {
+
+
+
+}
+
+
+
+.novel-heading {
+
+
+
+    font-family: "Hiragino Sans", "Meiryo", sans-serif;
+
+
+
+    font-size: var(--font-size-base);
+
+
+
+    font-weight: 600;
+
+
+
+    padding: 16px 16px 8px;
+
+
+
+    color: var(--text);
+
+
+
+    background-color: var(--bg);
+
+
+
+}
+
+
+
+
+
+
+
+/* === Novel Body (§3.5, §6.3) === */
+
+
+
+.novel-body {
+
+
+
+    position: absolute;
+
+
+
+    top: 56px;
+
+
+
+    left: 0;
+
+
+
+    right: 0;
+
+
+
+    bottom: 0;
+
+
+
+    height: calc(100vh - 112px);
+
+
+
+    overflow-y: auto;
+
+
+
+    overflow-x: hidden;
+
+
+
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+
+
+
+        font-size: var(--font-size-base);
+
+
+
+
+    line-height: 1.8;
+
+
+
+    text-align: justify;
+
+
+
+    padding: 0 16px 56px;
+
+
+
+    color: var(--text);
+
+
+
+    background-color: var(--bg);
+
+
+
+    overflow-y: auto;
+
+
+
+}
+
+
+
+.novel-body p {
+
+
+
+    margin-bottom: 0.5em;
+
+
+
+    text-indent: 1em;
+
+
+
+}
+
+
+
+
+
+
+
+/* === Navigation Bar (§3.4) === */
+
+
+
+.nav-bar {
+
+
+
+    display: flex;
+
+
+
+    align-items: center;
+
+
+
+    justify-content: space-between;
+
+
+
+    height: 56px;
+
+
+
+    min-height: 56px;
+
+
+
+    background-color: var(--nav-bg);
+
+
+
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.08);
+
+
+
+    position: fixed;
+
+
+
+    bottom: 0;
+
+
+
+    left: 0;
+
+
+
+    right: 0;
+
+
+
+    z-index: 100;
+
+
+
+}
+
+
+
+.btn-nav {
+
+
+
+    flex-shrink: 0;
+
+
+
+    height: 48px;
+
+
+
+    min-height: 48px;
+
+
+
+    padding: 0 16px;
+
+
+
+    background: transparent;
+
+
+
+    border: none;
+
+
+
+    font-size: 14px;
+
+
+
+    font-weight: 500;
+
+
+
+    color: var(--accent);
+
+
+
+    cursor: pointer;
+
+
+
+    display: flex;
+
+
+
+    align-items: center;
+
+
+
+    justify-content: center;
+
+
+
+}
+
+
+
+.btn-nav:focus {
+
+
+
+    outline: 2px solid var(--accent);
+
+
+
+    outline-offset: -2px;
+
+
+
+}
+
+
+
+.btn-nav.disabled-state {
+
+
+
+    opacity: 0.4;
+
+
+
+    cursor: default;
+
+
+
+}
+
+
+
+.nav-counter {
+
+
+
+    flex-shrink: 0;
+
+
+
+    font-size: 13px;
+
+
+
+    color: var(--text);
+
+
+
+    opacity: 0.7;
+
+
+
+    padding: 0 8px;
+
+
+
+}
+
+
+
+
+
+
+
+/* === TOC Overlay (§4) === */
+
+
+
+.toc-overlay {
+
+
+
+    position: fixed;
+
+
+
+    inset: 0;
+
+
+
+    background-color: var(--toc-overlay);
+
+
+
+    z-index: 200;
+
+
+
+    display: none;
+
+
+
+}
+
+
+
+.toc-overlay.active {
+
+
+
+    display: flex;
+
+
+
+    align-items: flex-start;
+
+
+
+    justify-content: center;
+
+
+
+    height: 100vh;
+
+
+
+    overflow-y: auto;
+
+
+
+    padding-bottom: 16px;
+
+
+
+    animation: fadeIn 300ms ease-out;
+
+
+
+}
+
+
+
+@keyframes fadeIn {
+
+
+
+    from { opacity: 0; }
+
+
+
+    to   { opacity: 1; }
+
+
+
+}
+
+
+
+.toc-panel {
+
+
+
+    width: 90%;
+
+
+
+    max-width: 420px;
+
+
+
+    display: flex;
+
+
+
+    flex-direction: column;
+
+
+
+    min-height: 0;
+
+
+
+    background-color: var(--toc-card);
+
+
+
+    border-radius: 12px;
+
+
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+
+
+
+    animation: slideDown 300ms ease-out;
+
+
+
+}
+
+
+
+@keyframes slideDown {
+
+
+
+    from { transform: translateY(-20px); opacity: 0; }
+
+
+
+    to   { transform: translateY(0); opacity: 1; }
+
+
+
+}
+
+
+
+.toc-header {
+
+
+
+    display: flex;
+
+
+
+    align-items: center;
+
+
+
+    justify-content: space-between;
+
+
+
+    padding: 16px 12px 8px;
+
+
+
+    border-bottom: 1px solid rgba(128,128,128,0.2);
+
+
+
+}
+
+
+
+.toc-title {
+
+
+
+    font-size: 18px;
+
+
+
+    font-weight: 700;
+
+
+
+    color: var(--text);
+
+
+
+    overflow: hidden;
+
+
+
+    text-overflow: ellipsis;
+
+
+
+    white-space: nowrap;
+
+
+
+}
+
+
+
+.btn-close-toc {
+
+
+
+    flex-shrink: 0;
+
+
+
+    width: 36px;
+
+
+
+    height: 36px;
+
+
+
+    background: transparent;
+
+
+
+    border: none;
+
+
+
+    font-size: 20px;
+
+
+
+    color: var(--text);
+
+
+
+    cursor: pointer;
+
+
+
+}
+
+
+
+.toc-list {
+
+
+
+    list-style: none;
+
+
+
+    padding: 4px 0;
+
+
+
+}
+
+
+
+.toc-item {
+
+
+
+    padding: 12px 16px;
+
+
+
+    font-size: 15px;
+
+
+
+    color: var(--text);
+
+
+
+    cursor: pointer;
+
+
+
+    border-bottom: 1px solid rgba(128,128,128,0.08);
+
+
+
+}
+
+
+
+.toc-item:hover {
+
+
+
+    background-color: rgba(74,111,165,0.08);
+
+
+
+}
+
+
+
+html.sepia .toc-item:hover {
+
+
+
+    background-color: rgba(139,105,20,0.1);
+
+
+
+}
+
+
+
+html.dark .toc-item:hover {
+
+
+
+    background-color: rgba(126,161,193,0.12);
+
+
+
+}
+
+
+
+.toc-item.active {
+
+
+
+    background-color: var(--accent);
+
+
+
+    color: #fff;
+
+
+
+    font-weight: 600;
+
+
+
+}
+
+
+
+
+
+
+
+/* === Loading Screen (§3, §7.5) === */
+
+
+
+.loading-screen {
+
+
+
+    position: fixed;
+
+
+
+    inset: 0;
+
+
+
+    display: flex;
+
+
+
+    flex-direction: column;
+
+
+
+    align-items: center;
+
+
+
+    justify-content: center;
+
+
+
+    background-color: var(--bg);
+
+
+
+    z-index: 300;
+
+
+
+}
+
+
+
+.loading-screen.hidden {
+
+
+
+    display: none;
+
+
+
+}
+
+
+
+.loading-screen p {
+
+
+
+    font-size: 16px;
+
+
+
+    color: var(--text);
+
+
+
+    margin-bottom: 24px;
+
+
+
+}
+
+
+
+.btn-import {
+
+
+
+    height: 52px;
+
+
+
+    min-height: 48px;
+
+
+
+    padding: 0 32px;
+
+
+
+    font-size: 17px;
+
+
+
+    font-weight: 600;
+
+
+
+    color: #fff;
+
+
+
+    background-color: var(--accent);
+
+
+
+    border: none;
+
+
+
+    border-radius: 8px;
+
+
+
+    cursor: pointer;
+
+
+
+}
+
+
+
+.btn-import:hover {
+
+
+
+    opacity: 0.9;
+
+
+
+}
+
+
+
+.btn-import:focus {
+
+
+
+    outline: 2px solid var(--text);
+
+
+
+    outline-offset: 2px;
+
+
+
+}
+
+
+
+
+
+
+
+/* === Menu Overlay === */
+
+
+
+.menu-overlay {
+
+
+
+    position: fixed;
+
+
+
+    inset: 0;
+
+
+
+    background-color: var(--toc-overlay);
+
+
+
+    z-index: 250;
+
+
+
+    display: none;
+
+
+
+}
+
+
+
+.menu-overlay.active {
+
+
+
+    display: flex;
+
+
+
+    align-items: flex-end;
+
+
+
+    justify-content: center;
+
+
+
+    height: 100vh;
+
+
+
+    overflow-y: auto;
+
+
+
+    padding-bottom: 16px;
+
+
+
+    animation: fadeIn 300ms ease-out;
+
+
+
+}
+
+
+
+.menu-panel {
+
+
+
+    width: 90%;
+
+
+
+    max-width: 420px;
+
+
+
+    background-color: var(--toc-card);
+
+
+
+    border-radius: 12px 12px 0 0;
+
+
+
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+
+
+
+    padding: 24px 0;
+
+
+
+    animation: slideUp 300ms ease-out;
+
+
+
+}
+
+
+
+@keyframes slideUp {
+
+
+
+    from { transform: translateY(100%); }
+
+
+
+    to   { transform: translateY(0); }
+
+
+
+}
+
+
+
+.menu-list {
+
+
+
+    list-style: none;
+
+
+
+    padding: 0 16px;
+
+
+
+}
+
+
+
+.menu-item {
+
+
+
+    height: 52px;
+
+
+
+    min-height: 48px;
+
+
+
+    display: flex;
+
+
+
+    align-items: center;
+
+
+
+    padding: 0 12px;
+
+
+
+    font-size: 16px;
+
+
+
+    color: var(--text);
+
+
+
+    cursor: pointer;
+
+
+
+    border-bottom: 1px solid rgba(128,128,128,0.08);
+
+
+
+}
+
+
+
+.menu-item:last-child {
+
+
+
+    border-bottom: none;
+
+
+
+}
+
+
+
+.menu-item:hover {
+
+
+
+    background-color: rgba(74,111,165,0.08);
+
+
+
+}
+
+
+
+html.sepia .menu-item:hover {
+
+
+
+    background-color: rgba(139,105,20,0.1);
+
+
+
+}
+
+
+
+html.dark .menu-item:hover {
+
+
+
+    background-color: rgba(126,161,193,0.12);
+
+
+
+}
+
+
+
+.menu-item[style*="font-weight"] {
+
+
+
+    font-weight: 700;
+
+
+
+    color: var(--accent);
+
+
+
+}
+
+
+
+
+
+
+
+/* === Responsive (§6.4) === */
+
+
+
+@media (min-width: 768px) {
+
+
+
+    .novel-body {
+
+
+
+        height: calc(100vh - 112px);
+
+
+
+        max-width: 680px;
+
+
+
+        margin: 0 auto;
+
+
+
+    }
+
+
+
+    .novel-heading {
+
+
+
+        font-size: var(--font-size-base);
+
+
+
+    }
+
+
+
+    .toc-panel {
+
+
+
+        width: 70%;
+
+
+
+    }
+
+
+
+}
+
+
+
+@media (min-width: 1024px) {
+
+
+
+    .novel-body {
+
+
+
+        height: calc(100vh - 112px);
+
+
+
+        max-width: 720px;
+
+
+
+        margin: 0 auto;
+
+
+
+    }
+
+
+
+    .novel-heading {
+
+
+
+        font-size: var(--font-size-base);
+
+
+
+    }
+
+
+
+}
+
+
+
+    
+
+/* === Font Size Slider === */
+
+.slider-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+}
+
+.slider-value {
+    font-size: 15px;
+    color: var(--text);
+    min-width: 48px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.font-slider {
+    flex: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--accent);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.font-slider::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.font-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+}

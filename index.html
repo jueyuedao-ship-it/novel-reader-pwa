@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+
+
+<html lang="ja">
+
+
+
+<head>
+
+
+
+    <meta charset="UTF-8">
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+
+    <title>小説リーダー</title>
+    <meta name="theme-color" content="#F9F9F9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="小説リーダー">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+
+
+
+    <link rel="stylesheet" href="./styles.css">
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+    <!-- ===== 上部ヘッダー ===== -->
+
+
+
+    <header class="app-header">
+
+
+
+        <button class="btn-toc" id="btnTocHeader" aria-label="目次">≡</button>
+
+
+
+        <h1 class="book-title" id="bookTitle"></h1>
+
+
+
+        <button class="btn-menu" id="btnMenu" aria-label="メニュー">⋮</button>
+
+
+
+    </header>
+
+
+
+
+
+
+
+    <!-- ===== 話見出し領域 ===== -->
+
+
+
+    <div class="chapter-heading-area" id="headingArea">
+
+
+
+        <h2 class="novel-heading" id="chapterHeading"></h2>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- ===== 本文エリア ===== -->
+
+
+
+    <div class="novel-body" id="novelBody"></div>
+
+
+
+
+
+
+
+    <!-- ===== 下部ナビバー ===== -->
+
+
+
+    <nav class="nav-bar">
+
+
+
+        <button class="btn-nav btn-prev" id="btnPrev">◀ 前ページ</button>
+
+
+
+        <button class="btn-nav btn-toc" id="btnTocNav">☰ 目次</button>
+
+
+
+        <span class="nav-counter" id="navCounter">0 / 0</span>
+
+
+
+        <button class="btn-nav btn-next" id="btnNext">次ページ ▶</button>
+
+
+
+    </nav>
+
+
+
+
+
+
+
+    <!-- ===== 目次オーバーレイ ===== -->
+
+
+
+    <div class="toc-overlay" id="tocOverlay">
+
+
+
+        <div class="toc-panel">
+
+
+
+            <div class="toc-header">
+
+
+
+                <h3 class="toc-title" id="tocTitle"></h3>
+
+
+
+                <button class="btn-close-toc" id="btnCloseToc">✕</button>
+
+
+
+            </div>
+
+
+
+            <ul class="toc-list" id="tocList"></ul>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- ===== ローディング画面 ===== -->
+
+
+
+    <div class="loading-screen" id="loadingScreen">
+
+
+
+        <p>小説を取り込んで読書を始めましょう</p>
+
+
+
+        <button class="btn-import" id="btnImport">小説取り込み</button>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- ===== 隠しファイル入力 ===== -->
+
+
+
+    <input type="file" id="fileInput" accept=".json" style="display:none;">
+
+
+
+
+
+
+
+    <!-- ===== メニューオーバーレイ ===== -->
+
+
+
+    <div class="menu-overlay" id="menuOverlay">
+
+
+
+        <div class="menu-panel">
+
+
+
+            <ul class="menu-list">
+
+
+
+                <li class="menu-section">
+
+                    <span class="menu-label">文字サイズ</span>
+
+                    <div class="slider-row">
+
+                        <span class="slider-value" id="fontSizeLabel">17px</span>
+
+                        <input type="range" class="font-slider" id="fontSizeSlider" min="12" max="36" value="17" step="1">
+
+                    </div>
+
+                </li>
+
+
+
+<li class="menu-item" id="menuLight">☀️ ライト</li>
+
+
+
+                <li class="menu-item" id="menuSepia">📜 セピア</li>
+
+
+
+                <li class="menu-item" id="menuDark">🌙 ダーク</li>
+
+
+
+            </ul>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <script src="./app.js"></script>
+    <script src="./pwa.js"></script>
+
+
+
+</body>
+
+
+
+</html>
+
+
+
